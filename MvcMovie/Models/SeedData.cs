@@ -25,7 +25,7 @@ namespace MvcMovie.Models
                          ReleaseDate = DateTime.Parse("1989-1-11"),
                          Genre = "Romantic Comedy",
                          Campus = "R",
-                         Price = 7.99M
+                         Numero = 799
                      },
 
                      new Movie
@@ -34,7 +34,7 @@ namespace MvcMovie.Models
                          ReleaseDate = DateTime.Parse("1984-3-13"),
                          Genre = "Comedy",
                          Campus = "R",
-                         Price = 8.99M
+                         Numero = 899
                      },
 
                      new Movie
@@ -43,7 +43,7 @@ namespace MvcMovie.Models
                          ReleaseDate = DateTime.Parse("1986-2-23"),
                          Genre = "Comedy",
                          Campus = "R",
-                         Price = 9.99M
+                         Numero = 999
                      },
 
                    new Movie
@@ -52,7 +52,7 @@ namespace MvcMovie.Models
                        ReleaseDate = DateTime.Parse("1959-4-15"),
                        Genre = "Western",
                        Campus = "R",
-                       Price = 3.99M
+                       Numero = 399
                    }
                 );
                 context.SaveChanges();
