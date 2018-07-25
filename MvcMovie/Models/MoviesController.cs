@@ -19,31 +19,31 @@ namespace MvcMovie.Models
 
         // GET: Movies
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
-        public async Task<IActionResult> Index(string movieGenre, string searchString)
+        public async Task<IActionResult> Index(string movieCampus, string searchString)
         {
-            // Use LINQ to get list of genres.
-            IQueryable<string> genreQuery = from m in _context.Movie
-                                            orderby m.Genre
-                                            select m.Genre;
+            // Use LINQ to get list of campi.
+            IQueryable<string> campusQuery = from m in _context.Movie
+                                            orderby m.Campus
+                                            select m.Campus;
 
             var movies = from m in _context.Movie
                          select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                movies = movies.Where(s => s.Title.Contains(searchString));
+                movies = movies.Where(s => s.Numero == Int32.Parse(searchString));
             }
 
-            if (!String.IsNullOrEmpty(movieGenre))
+            if (!String.IsNullOrEmpty(movieCampus))
             {
-                movies = movies.Where(x => x.Genre == movieGenre);
+                movies = movies.Where(x => x.Campus == movieCampus);
             }
 
-            var movieGenreVM = new MovieGenreViewModel();
-            movieGenreVM.genres = new SelectList(await genreQuery.Distinct().ToListAsync());
-            movieGenreVM.movies = await movies.ToListAsync();
+            var movieCampusVM = new MovieCampusViewModel();
+            movieCampusVM.campi = new SelectList(await campusQuery.Distinct().ToListAsync());
+            movieCampusVM.movies = await movies.ToListAsync();
 
-            return View(movieGenreVM);
+            return View(movieCampusVM);
         }
 
         // GET: Movies/Details/5
@@ -75,7 +75,7 @@ namespace MvcMovie.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Title,ReleaseDate,Genre,Numero,Campus,PossuiComputador")] Movie movie)
+        public async Task<IActionResult> Create([Bind("ID,Numero,Campus,PossuiComputador")] Movie movie)
         {
             if (ModelState.IsValid)
             {
@@ -107,7 +107,7 @@ namespace MvcMovie.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID,Title,ReleaseDate,Genre,Numero")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("ID, Numero, Campus, PossuiComputador")] Movie movie)
         {
             if (id != movie.ID)
             {

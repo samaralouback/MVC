@@ -14,25 +14,21 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="ID" />
             <div class="form-group">
-                <label asp-for="Title" class="control-label"></label>
-                <input asp-for="Title" class="form-control" />
-                <span asp-validation-for="Title" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ReleaseDate" class="control-label"></label>
-                <input asp-for="ReleaseDate" class="form-control" />
-                <span asp-validation-for="ReleaseDate" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Genre" class="control-label"></label>
-                <input asp-for="Genre" class="form-control" />
-                <span asp-validation-for="Genre" class="text-danger"></span>
+                <label asp-for="Campus" class="control-label"></label>
+                <input asp-for="Campus" class="form-control" />
+                <span asp-validation-for="Campus" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Numero" class="control-label"></label>
                 <input asp-for="Numero" class="form-control" />
                 <span asp-validation-for="Numero" class="text-danger"></span>
             </div>
+            <div class="form-group">
+                <label asp-for="PossuiComputador" class="control-label"></label>
+                <input asp-for="PossuiComputador" class="form-control" />
+                <span asp-validation-for="PossuiComputador" class="text-danger"></span>
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-default" />
             </div>

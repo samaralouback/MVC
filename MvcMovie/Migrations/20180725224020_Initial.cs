@@ -1,5 +1,4 @@
-﻿using System;
-using Microsoft.EntityFrameworkCore.Metadata;
+﻿using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace MvcMovie.Migrations
@@ -14,10 +13,9 @@ namespace MvcMovie.Migrations
                 {
                     ID = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn),
-                    Title = table.Column<string>(nullable: true),
-                    ReleaseDate = table.Column<DateTime>(nullable: false),
-                    Genre = table.Column<string>(nullable: true),
-                    Price = table.Column<decimal>(nullable: false)
+                    Numero = table.Column<int>(nullable: false),
+                    Campus = table.Column<string>(nullable: false),
+                    PossuiComputador = table.Column<bool>(nullable: false)
                 },
                 constraints: table =>
                 {

@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 namespace MvcMovie.Models
 {
-    public class MovieGenreViewModel
+    public class MovieCampusViewModel
     {
         public List<Movie> movies;
-        public SelectList genres;
-        public string movieGenre { get; set; }
+        public SelectList campi;
+        public string movieCampus { get; set; }
     }
 }
