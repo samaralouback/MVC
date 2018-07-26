@@ -2,9 +2,9 @@
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace MvcMovie.Models
+namespace MvcProjetor.Models
 {
-    public class Movie
+    public class Projetor
     {
         public int ID { get; set; }
 

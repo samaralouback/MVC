@@ -9,8 +9,8 @@ using MvcProjetor.Models;
 namespace MvcProjetor.Migrations
 {
     [DbContext(typeof(MvcProjetorContext))]
-    [Migration("20180725224020_Initial")]
-    partial class Initial
+    [Migration("20180726000042_movierename")]
+    partial class movierename
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -20,7 +20,7 @@ namespace MvcProjetor.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128)
                 .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-            modelBuilder.Entity("MvcMovie.Models.Movie", b =>
+            modelBuilder.Entity("MvcProjetor.Models.Projetor", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -35,7 +35,7 @@ namespace MvcProjetor.Migrations
 
                     b.HasKey("ID");
 
-                    b.ToTable("Movie");
+                    b.ToTable("Projetor");
                 });
 #pragma warning restore 612, 618
         }

@@ -1,4 +1,4 @@
-﻿@model MvcMovie.Models.MovieCampusViewModel
+﻿@model MvcProjetor.Models.ProjetorCampusViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -10,9 +10,9 @@
     <a asp-action="Create">Create New</a>
 </p>
 
-<form asp-controller="Movies" asp-action="Index">
+<form asp-controller="Projetores" asp-action="Index">
     <p>
-        <select asp-for="movieCampus" asp-items="Model.campi">
+        <select asp-for="projetorCampus" asp-items="Model.campi">
             <option value="">All</option>
         </select>
 
@@ -25,19 +25,19 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.movies[0].Numero)
+                @Html.DisplayNameFor(model => model.projetores[0].Numero)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.movies[0].Campus)
+                @Html.DisplayNameFor(model => model.projetores[0].Campus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.movies[0].PossuiComputador)
+                @Html.DisplayNameFor(model => model.projetores[0].PossuiComputador)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.movies)
+        @foreach (var item in Model.projetores)
         {
         <tr>
             <td>

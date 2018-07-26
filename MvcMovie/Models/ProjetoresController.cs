@@ -6,44 +6,44 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 
-namespace MvcMovie.Models
+namespace MvcProjetor.Models
 {
-    public class MoviesController : Controller
+    public class ProjetoresController : Controller
     {
-        private readonly MvcMovieContext _context;
+        private readonly MvcProjetorContext _context;
 
-        public MoviesController(MvcMovieContext context)
+        public ProjetoresController(MvcProjetorContext context)
         {
             _context = context;
         }
 
         // GET: Movies
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
-        public async Task<IActionResult> Index(string movieCampus, string searchString)
+        public async Task<IActionResult> Index(string projetorCampus, string searchString)
         {
             // Use LINQ to get list of campi.
-            IQueryable<string> campusQuery = from m in _context.Movie
+            IQueryable<string> campusQuery = from m in _context.Projetor
                                             orderby m.Campus
                                             select m.Campus;
 
-            var movies = from m in _context.Movie
+            var projetores = from m in _context.Projetor
                          select m;
 
             if (!String.IsNullOrEmpty(searchString))
             {
-                movies = movies.Where(s => s.Numero == Int32.Parse(searchString));
+                projetores = projetores.Where(s => s.Numero == Int32.Parse(searchString));
             }
 
-            if (!String.IsNullOrEmpty(movieCampus))
+            if (!String.IsNullOrEmpty(projetorCampus))
             {
-                movies = movies.Where(x => x.Campus == movieCampus);
+                projetores = projetores.Where(x => x.Campus == projetorCampus);
             }
 
-            var movieCampusVM = new MovieCampusViewModel();
-            movieCampusVM.campi = new SelectList(await campusQuery.Distinct().ToListAsync());
-            movieCampusVM.movies = await movies.ToListAsync();
+            var projetorCampusVM = new ProjetorCampusViewModel();
+            projetorCampusVM.campi = new SelectList(await campusQuery.Distinct().ToListAsync());
+            projetorCampusVM.projetores = await projetores.ToListAsync();
 
-            return View(movieCampusVM);
+            return View(projetorCampusVM);
         }
 
         // GET: Movies/Details/5
@@ -54,14 +54,14 @@ namespace MvcMovie.Models
                 return NotFound();
             }
 
-            var movie = await _context.Movie
+            var projetor = await _context.Projetor
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (movie == null)
+            if (projetor == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View(projetor);
         }
 
         // GET: Movies/Create
@@ -75,15 +75,15 @@ namespace MvcMovie.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("ID,Numero,Campus,PossuiComputador")] Movie movie)
+        public async Task<IActionResult> Create([Bind("ID,Numero,Campus,PossuiComputador")] Projetor projetor)
         {
             if (ModelState.IsValid)
             {
-                _context.Add(movie);
+                _context.Add(projetor);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            return View(projetor);
         }
 
         // GET: Movies/Edit/5
@@ -94,12 +94,12 @@ namespace MvcMovie.Models
                 return NotFound();
             }
 
-            var movie = await _context.Movie.FindAsync(id);
-            if (movie == null)
+            var projetor = await _context.Projetor.FindAsync(id);
+            if (projetor == null)
             {
                 return NotFound();
             }
-            return View(movie);
+            return View(projetor);
         }
 
         // POST: Movies/Edit/5
@@ -107,9 +107,9 @@ namespace MvcMovie.Models
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("ID, Numero, Campus, PossuiComputador")] Movie movie)
+        public async Task<IActionResult> Edit(int id, [Bind("ID, Numero, Campus, PossuiComputador")] Projetor projetor)
         {
-            if (id != movie.ID)
+            if (id != projetor.ID)
             {
                 return NotFound();
             }
@@ -118,12 +118,12 @@ namespace MvcMovie.Models
             {
                 try
                 {
-                    _context.Update(movie);
+                    _context.Update(projetor);
                     await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!MovieExists(movie.ID))
+                    if (!ProjetorExists(projetor.ID))
                     {
                         return NotFound();
                     }
@@ -134,7 +134,7 @@ namespace MvcMovie.Models
                 }
                 return RedirectToAction(nameof(Index));
             }
-            return View(movie);
+            return View(projetor);
         }
 
         // GET: Movies/Delete/5
@@ -145,14 +145,14 @@ namespace MvcMovie.Models
                 return NotFound();
             }
 
-            var movie = await _context.Movie
+            var projetor = await _context.Projetor
                 .FirstOrDefaultAsync(m => m.ID == id);
-            if (movie == null)
+            if (projetor == null)
             {
                 return NotFound();
             }
 
-            return View(movie);
+            return View(projetor);
         }
 
         // POST: Movies/Delete/5
@@ -160,15 +160,15 @@ namespace MvcMovie.Models
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var movie = await _context.Movie.FindAsync(id);
-            _context.Movie.Remove(movie);
+            var projetor = await _context.Projetor.FindAsync(id);
+            _context.Projetor.Remove(projetor);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool MovieExists(int id)
+        private bool ProjetorExists(int id)
         {
-            return _context.Movie.Any(e => e.ID == id);
+            return _context.Projetor.Any(e => e.ID == id);
         }
     }
 }
