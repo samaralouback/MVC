@@ -17,7 +17,7 @@ namespace MvcProjetor.Models
             _context = context;
         }
 
-        // GET: Movies
+        // GET: Projetores
         // Requires using Microsoft.AspNetCore.Mvc.Rendering;
         public async Task<IActionResult> Index(string projetorCampus, string searchString)
         {
@@ -46,7 +46,7 @@ namespace MvcProjetor.Models
             return View(projetorCampusVM);
         }
 
-        // GET: Movies/Details/5
+        // GET: Projetores/Details/5
         public async Task<IActionResult> Details(int? id)
         {
             if (id == null)
@@ -64,13 +64,13 @@ namespace MvcProjetor.Models
             return View(projetor);
         }
 
-        // GET: Movies/Create
+        // GET: Projetores/Create
         public IActionResult Create()
         {
             return View();
         }
 
-        // POST: Movies/Create
+        // POST: Projetores/Create
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -86,7 +86,7 @@ namespace MvcProjetor.Models
             return View(projetor);
         }
 
-        // GET: Movies/Edit/5
+        // GET: Projetores/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
             if (id == null)
@@ -102,7 +102,7 @@ namespace MvcProjetor.Models
             return View(projetor);
         }
 
-        // POST: Movies/Edit/5
+        // POST: Projetores/Edit/5
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
@@ -137,7 +137,7 @@ namespace MvcProjetor.Models
             return View(projetor);
         }
 
-        // GET: Movies/Delete/5
+        // GET: Projetores/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
             if (id == null)
@@ -155,7 +155,7 @@ namespace MvcProjetor.Models
             return View(projetor);
         }
 
-        // POST: Movies/Delete/5
+        // POST: Projetores/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)

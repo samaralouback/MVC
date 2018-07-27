@@ -7,7 +7,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using MvcProjetor.Models;
 
-namespace MvcMovie.Controllers
+namespace MvcResource.Controllers
 {
     public class AuditoriosController : Controller
     {
