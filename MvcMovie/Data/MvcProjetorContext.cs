@@ -14,5 +14,6 @@ namespace MvcProjetor.Models
         }
 
         public DbSet<MvcProjetor.Models.Projetor> Projetor { get; set; }
+        public DbSet<MvcProjetor.Models.Auditorio> Auditorio { get; set; }
     }
 }
