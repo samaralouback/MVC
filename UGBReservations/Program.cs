@@ -7,6 +7,12 @@ using Microsoft.EntityFrameworkCore;
 using MvcProjetor.Models;
 using MvcProjetor;
 
+/*
+ * TODO: Remover todas as ocorrências da palavra "Movie"
+ * TODO: Adcionar um link para lista de Auditórios
+ * TODO: Criar "Laboratórios"
+ */
+
 namespace MvcProjetor
 {
     public class Program
