@@ -19,9 +19,31 @@ namespace MvcResource.Controllers
         }
 
         // GET: Auditorios
-        public async Task<IActionResult> Index()
+        public async Task<IActionResult> Index(string auditorioCampus, string searchString)
         {
-            return View(await _context.Auditorio.ToListAsync());
+            // Use LINQ to get list of campi.
+            IQueryable<string> campusQuery = from m in _context.Auditorio
+                                             orderby m.Campus
+                                             select m.Campus;
+
+            var auditorios = from m in _context.Auditorio
+                             select m;
+
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                auditorios = auditorios.Where(s => s.Nome == (searchString));
+            }
+
+            if (!String.IsNullOrEmpty(auditorioCampus))
+            {
+                auditorios = auditorios.Where(x => x.Campus == auditorioCampus);
+            }
+
+            var auditorioCampusVM = new AuditorioCampusViewModel();
+            auditorioCampusVM.campi = new SelectList(await campusQuery.Distinct().ToListAsync());
+            auditorioCampusVM.auditorios = await auditorios.ToListAsync();
+
+            return View(auditorioCampusVM);
         }
 
         // GET: Auditorios/Details/5

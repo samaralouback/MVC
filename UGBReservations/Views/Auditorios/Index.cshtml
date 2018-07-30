@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MvcProjetor.Models.Auditorio>
+﻿@model MvcProjetor.Models.AuditorioCampusViewModel
 
 @{
     ViewData["Title"] = "Index";
@@ -9,39 +9,52 @@
 <p>
     <a asp-action="Create">Create New</a>
 </p>
+
+<form asp-controller="Auditorios" asp-action="Index">
+    <p>
+        <select asp-for="auditorioCampus" asp-items="Model.campi">
+            <option value="">All</option>
+        </select>
+
+        Title: <input type="text" name="SearchString">
+        <input type="submit" value="Filter" />
+    </p>
+</form>
+
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.Nome)
+                @Html.DisplayNameFor(model => model.auditorios[0].Nome)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Campus)
+                @Html.DisplayNameFor(model => model.auditorios[0].Campus)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Bloco)
+                @Html.DisplayNameFor(model => model.auditorios[0].Bloco)
             </th>
             <th></th>
         </tr>
     </thead>
     <tbody>
-@foreach (var item in Model) {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Nome)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Campus)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bloco)
-            </td>
-            <td>
-                <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
-                <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
-                <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
-            </td>
-        </tr>
-}
+        @foreach (var item in Model.auditorios)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Campus)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bloco)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.ID">Edit</a> |
+                    <a asp-action="Details" asp-route-id="@item.ID">Details</a> |
+                    <a asp-action="Delete" asp-route-id="@item.ID">Delete</a>
+                </td>
+            </tr>
+        }
     </tbody>
 </table>

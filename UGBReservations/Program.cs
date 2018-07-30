@@ -9,8 +9,8 @@ using MvcProjetor;
 
 /*
  * TODO: Remover todas as ocorrências da palavra "Movie"
- * TODO: Adcionar um link para lista de Auditórios
  * TODO: Criar "Laboratórios"
+ * TODO: Adcionar um link para lista de Laboratórios
  */
 
 namespace MvcProjetor
