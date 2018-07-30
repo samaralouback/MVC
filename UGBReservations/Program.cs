@@ -9,8 +9,7 @@ using MvcProjetor;
 
 /*
  * TODO: Remover todas as ocorrências da palavra "Movie"
- * TODO: Criar "Laboratórios"
- * TODO: Adcionar um link para lista de Laboratórios
+ * TODO: criar pesquisa em laboratório
  */
 
 namespace MvcProjetor
